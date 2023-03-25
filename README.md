@@ -18,7 +18,7 @@ I struggled for a long time trying to the get the toast form fade-in/fade-out wo
 
 These two examples provide a quick glance at how to display a toast. 
 
-This code shows a toast in the lower left-hand corner of the parent form:
+This is the minimal code needed to show a toast in the lower left-hand corner of the parent form:
 
 ```c#
 Toast toast  = new Toast(this);
@@ -27,7 +27,7 @@ toast.MessageText = "Yay! World's best cup of coffee!";
 toast.ShowToast();
 ```
 
-This code shows a toast in the center of the parent form: 
+This code shows a toast in the center of the parent form with error color and icon and for an extra long duration: 
 
 ```c#
 Toast toast  = new Toast(this);
@@ -69,7 +69,7 @@ Show a toast
 
 #### `ChangeDefaultDurationInSections(int, int, int, int)`
 
-Change the default seconds a toast is displayed (these values relate to the values represented by the ToastDuration enumration discussed later). There is more on this method below.
+Change the default seconds a toast is displayed (these values relate to the values represented by the `ToastDuration` enumeration discussed later). There is more on this method below.
 
 #### `SetMessageText(string)`
 
@@ -258,8 +258,6 @@ A `Progress` class is instanced with a lambda that sets the toast message with i
 progress.Report(rs.binary_filename); 
 ```
 which, through the lambda assignment, sets the toast message to the just-processed file name. When the work is done, the toast's `CloseToast()` method closes the toast.
-
-Kudos to the C# team for its work with async tasks and all the goodies that accompany them. You blead trying to do this kind of stuff with C# 4.0. 
 
 ```
 public async void StageReleaseSetProcessing() 
