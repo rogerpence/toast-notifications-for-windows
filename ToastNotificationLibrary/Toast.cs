@@ -1,6 +1,4 @@
-﻿using System.Windows.Forms;
-using FormFader;
-
+﻿using FormFader;
 
 namespace ToastNotification
 {
@@ -12,9 +10,9 @@ namespace ToastNotification
 
         public enum ToastStatus
         {
-            Success,
-            Info,
-            Error
+            SUCCESS,
+            INFO,
+            ERROR
         }
         string[] statusColors = { "#408C3A", "#0F4CF1", "#FF1B00" };
 
@@ -23,10 +21,10 @@ namespace ToastNotification
             SHORT,
             MEDIUM,
             LONG,
-            EXTRALONG,
-            USER_CLOSE
+            EXTRA_LONG,
+            FOREVER
         }
-        int[] durations = { 2500, 3500, 5000, 7500 };
+        int[] durations = { 3000, 6000, 9000, 12000 };
 
         public enum ToastPosition
         {
@@ -37,16 +35,16 @@ namespace ToastNotification
             CENTER
         }
 
-        public ToastStatus Status { get; set; } = ToastStatus.Success;
+        public ToastStatus Status { get; set; } = ToastStatus.SUCCESS;
         public ToastDuration Duration { get; set; } = ToastDuration.SHORT;
         public ToastPosition Position { get; set; } = ToastPosition.LOWER_LEFT;
         public string HeaderText { get; set; } = "Congratulations!";
         public string MessageText { get; set; } = "Yay! You did it! World's greatest cup of coffee!";
-        public bool UserClose { get; set; } = false;
         public bool HideHeaderMessage { get; set; } = false;
-        public Color BorderColor { get; set; }
-        public Color BackgroundColor { get; set; }
         public bool HideAccentAndIcon { get; set; } = false;
+        public bool HideUserCloseButton { get; set; } = false;
+        public Color BackgroundColor { get; set; }
+        public Color BorderColor { get; set; }
 
         public Toast(Form parentForm)
         {
@@ -55,6 +53,7 @@ namespace ToastNotification
 
             BorderColor = this.BackColor;
             BackgroundColor = this.panelToast.BackColor;
+            this.TopMost = true;
         }
 
         public void ChangeDefaultDurationSeconds(int slowDuration,
@@ -71,14 +70,17 @@ namespace ToastNotification
         private void Toast_Load(object sender, EventArgs e)
         {
             this.Opacity = 0;
-            pictureboxClose.Visible = UserClose;
 
             assignText();
             arrangeIcons();
             setActiveIcon(Status);
             setToastScreenPosition();
             setColors();
-            displayAndHideToast();
+        }
+
+        public void SetMessageText(string message)
+        {
+            labelToastMessageText.Text = message;
         }
 
         private void setColors()
@@ -109,7 +111,7 @@ namespace ToastNotification
         {
             Fader.FadeIn(this, Fader.FadeSpeed.Slow);
 
-            if (Duration == ToastDuration.USER_CLOSE) return;
+            if (Duration == ToastDuration.FOREVER) return;
 
             timer.Tick += (arg1, arg2) =>
             {
@@ -119,12 +121,6 @@ namespace ToastNotification
             };
             timer.Interval = durations[EnumToInt<ToastDuration>(Duration)];
             timer.Start();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Opacity = 1;
-            Fader.FadeOutAndClose(this, Fader.FadeSpeed.Slow);
         }
 
         private void setActiveIcon(ToastStatus status)
@@ -156,6 +152,7 @@ namespace ToastNotification
 
         private void arrangeIcons()
         {
+            pictureboxClose.Visible = !HideUserCloseButton;
             pictureboxInfo.Location = pictureboxSuccess.Location;
             pictureboxError.Location = pictureboxSuccess.Location;
         }
@@ -194,11 +191,23 @@ namespace ToastNotification
             }
         }
 
+        public void ShowToast()
+        {
+            displayAndHideToast();
+        }
+
         public void CloseToast()
         {
-            this.Opacity = 1;
-            Fader.FadeOutAndClose(this, Fader.FadeSpeed.Slow);
-            timer.Stop();
+            try
+            {
+                timer.Stop();
+                this.Opacity = 1;
+                Fader.FadeOutAndClose(this, Fader.FadeSpeed.Slow);
+            }
+            catch
+            {
+
+            }
         }
 
         private void pictureboxClose_Click(object sender, EventArgs e)
@@ -214,11 +223,10 @@ namespace ToastNotification
          *  Get enum member by name
          *  https://stackoverflow.com/questions/10685794/how-to-use-generic-tryparse-with-enum
          */
-        private TEnum EnumFromName<TEnum>(string name) where TEnum : struct
+        public static TEnum EnumFromName<TEnum>(string name) where TEnum : struct
         {
             string userInputString = string.Empty;
-            //TEnum resultInputType = default(TEnum);
-            TEnum resultInputType = default;
+            TEnum resultInputType = default(TEnum);
 
             Enum.TryParse(name, true, out resultInputType);
 
@@ -228,7 +236,7 @@ namespace ToastNotification
         /*
          *  Get array of enum names
          */
-        private string[] EnumToNames<T>()
+        public static string[] EnumToNames<T>()
         {
             List<string> result = new();
 
@@ -243,10 +251,18 @@ namespace ToastNotification
         /*
          *  Get enum member ordinal position
          */
-        public int EnumToInt<T>(T enumValue) where T : Enum
+        public static int EnumToInt<T>(T enumValue) where T : Enum
         {
             int index = Convert.ToInt32(enumValue);
             return index;
+        }
+
+        /*
+         *  Get enum value as string
+         */
+        public static string EnumGetName<T>(object value)
+        {{
+            return Enum.GetName(typeof(T), value);}
         }
     }
 }

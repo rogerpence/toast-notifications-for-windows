@@ -44,7 +44,7 @@
         /// </summary>
         private Fader(Form form)
         {
-            this.form = form;
+            this.form = form!;
         }
 
         /// <summary>

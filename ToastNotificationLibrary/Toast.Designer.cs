@@ -86,13 +86,13 @@
             panelToast.Location = new Point(20, 12);
             panelToast.Margin = new Padding(4);
             panelToast.Name = "panelToast";
-            panelToast.Size = new Size(1060, 230);
+            panelToast.Size = new Size(1068, 230);
             panelToast.TabIndex = 5;
             // 
             // pictureboxClose
             // 
             pictureboxClose.Image = (Image)resources.GetObject("pictureboxClose.Image");
-            pictureboxClose.Location = new Point(996, 8);
+            pictureboxClose.Location = new Point(1007, 8);
             pictureboxClose.Margin = new Padding(4);
             pictureboxClose.Name = "pictureboxClose";
             pictureboxClose.Size = new Size(53, 44);
