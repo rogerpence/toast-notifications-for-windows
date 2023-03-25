@@ -175,7 +175,7 @@ A toast's bold header text. Use the `HideHeaderMessage` property to hide this.
 ### Position
 
 | Description      | Type  | Default |
-| :---------------- | :----- | -:------ |
+| :---------------- | :----- | :------ |
 | The toast position relative to its parent form | ToastPosition | ToastPosition.LOWER_LEFT |
 
 ```
