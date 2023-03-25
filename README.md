@@ -85,7 +85,7 @@ SetMessageText(string)
 ### Toast properties overview
 
 | Property            | Description            | Type   | Default                  |
-| ------------------- | ---------------------- | ------ | ------------------------ |
+|:------------------- | :---------------------- | :------ | :------------------------ |
 | BackgroundColor     | Background color       | Color  | #F5F5F5                  |
 | BorderColor         | Border color           | Color  | #D3D3D3                  |
 | Duration            | Seconds shown          | enum   | ToastDuration.SHORT      |
@@ -100,23 +100,23 @@ SetMessageText(string)
 #### BackgroundColor
 
 | Description            | Type                 | Default |
-| ---------------------- | -------------------- | ------- |
+| :---------------------- | :-------------------- | :------- |
 | Toast background color | System.Drawing.Color | #F5F5F4 |
 
 #### BorderColor
 
 | Description      | Type  | Default |
-| ---------------- | ----- | ------- |
+| :---------------- | :----- | :------- |
 | Toast border color | System.Drawing.Color | #D3D3D3 |
 
 #### Duration
 
 | Description      | Type  | Default |
-| ---------------- | ----- | ------- |
+| :---------------- | :----- | :------- |
 | Seconds that a toast is displayed | ToastDuration enum | ToastDuration.SHORT |
 
 | Enum value               | Default seconds toast is displayed           |
-| ------------------------ | -------------------------------------------- |
+| :------------------------ | :-------------------------------------------- |
 | ToastDuration.SHORT      | 3                                            |
 | ToastDuration.MEDIUM     | 6                                            |
 | ToastDuration.LONG       | 9                                            |
@@ -141,7 +141,7 @@ There may be times when you want a long-lasting toast but don't want it closed b
 ### HeaderText
 
 | Description      | Type  | Default |
-| ---------------- | ----- | ------- |
+| :---------------- | :----- | :------- |
 | Header text of a toast | string | none |
 
 A toast's bold header text. Use the `HideHeaderMessage` property to hide this.
@@ -149,33 +149,33 @@ A toast's bold header text. Use the `HideHeaderMessage` property to hide this.
 ### HideAccentAndIcon
 
 | Description      | Type  | Default |
-| ---------------- | ----- | ------- |
+| :---------------- | :----- | :------- |
 | A Boolean that hides the vertical accent bar and icon | Bool | false |
 
 ### HideHeaderMessage
 
 | Description      | Type  | Default |
-| ---------------- | ----- | ------- |
+| :---------------- | :----- | :------- |
 | A Boolean that hides the toast header message | Boolean | false |
 
 ### HideUserCloseButton
 
 | Description      | Type  | Default |
-| ---------------- | ----- | ------- |
+| :---------------- | :----- | :------- |
 | A Boolean that hides the user-close "x" icon | Boolean | false |
 
 
 ### MessageText
 
 | Description      | Type  | Default |
-| ---------------- | ----- | ------- |
+| :---------------- | :----- | :------- |
 | Toast message | string | none |
 
 
 ### Position
 
 | Description      | Type  | Default |
-| ---------------- | ----- | ------- |
+| :---------------- | :----- | -:------ |
 | The toast position relative to its parent form | ToastPosition | ToastPosition.LOWER_LEFT |
 
 ```
@@ -193,7 +193,7 @@ ToastPosition.CENTER
 ### Status
 
 | Description      | Type  | Default |
-| ---------------- | ----- | ------- |
+| :---------------- | :----- | :------- |
 | Controls the toast accent color and icon | ToastStatus | ToastStatus.Succes |
 
 ToastStatus.SUCCESS - #408C3A with a checkbox 
