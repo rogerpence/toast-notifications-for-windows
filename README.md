@@ -12,7 +12,7 @@ This repo includes two projects:
 
 2. ToastNotificationLibrary - a small class library that provides the toast notifier form.
 
-I struggled for a long time trying to the get the toast form fade-in/fade-out working. I finally found [Nate Fiscaletti's gist]([A C# class used to control fading forms in and out · GitHub](https://gist.github.com/nathan-fiscaletti/3c0514862fe88b5664b10444e1098778) that provides exactly what I was trying to do. I used an unmodified version of Nate's code. Thank you, Nate! 
+I struggled for a long time trying to the get the toast form fade-in/fade-out working. I finally found [Nate Fiscaletti's gist](https://gist.github.com/nathan-fiscaletti/3c0514862fe88b5664b10444e1098778) with C# class that fades Windows forms in and out. It provides exactly what I needed to do. I used an unmodified version of Nate's code. Thank you, Nate! 
 
 ### Example code to show a toast
 
