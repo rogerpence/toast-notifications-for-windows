@@ -8,15 +8,15 @@ This library provides a flexible to asynchronous toast notifcations in .NET Wind
 
 This repo includes two projects:
 
-1. ToastNotfication - this is a Windows form app to test the ToastNotificationLibrary.
+1. **ToastNotfication** - this is a Windows form app to test the ToastNotificationLibrary.
 
-2. ToastNotificationLibrary - a small class library that provides the toast notifier form.
+2. **ToastNotificationLibrary** - a small class library that provides the toast notifier form.
 
-I struggled for a long time trying to the get the toast form fade-in/fade-out working. I finally found [Nate Fiscaletti's gist](https://gist.github.com/nathan-fiscaletti/3c0514862fe88b5664b10444e1098778) with C# class that fades Windows forms in and out. It provides exactly what I needed to do. I used an unmodified version of Nate's code. Thank you, Nate! 
+I struggled for a long time trying to the get the toast form fade-in/fade-out working. I finally found [Nate Fiscaletti's gist](https://gist.github.com/nathan-fiscaletti/3c0514862fe88b5664b10444e1098778) with a C# class that fades Windows forms in and out. It provides exactly what I needed to do. I used an unmodified version of Nate's code. Thank you, Nate! 
 
 ### Example code to show a toast
 
-These two examples provide a quick glance at how to display a toast. More examples are shown later in this document.
+These two examples provide a quick glance at how to display a toast. 
 
 This code shows a toast in the lower left-hand corner of the parent form:
 
@@ -43,6 +43,10 @@ toast.ShowToast();
 
 ### Toast constructor
 
+```c#
+Toast(Form parentForm)
+```
+
 Pass a reference to toast's parent form in the toast's constructor (usually with this). This makes the parent form's location to the toast so it can position itself relative to its parent form.
 
 ```c#
@@ -55,32 +59,23 @@ Toast toast  = new Toast(this);
 
 ### Toast methods
 
-Show a toast:
+#### `ShowToast()`
 
-```c#
-ShowToast() 
-```
+Show a toast
 
-Close a toast programmatically:
+#### `CloseToast()`
 
-```c#
-CloseToast()
-```
+`CloseToast()` method is used to close the toast programmatically--usually when you're displaying show-progress type toasts with a long-running process. 
 
-Change the default second durations a toast is displayed (these values related to the values represented by the ToastDuration enumration discussed later).
+#### `ChangeDefaultDurationInSections(int, int, int, int)`
 
-```c#
-ChangeDefaultDurationInSections(int, int, int, int)
-```
+Change the default seconds a toast is displayed (these values relate to the values represented by the ToastDuration enumration discussed later). There is more on this method below.
+
+#### `SetMessageText(string)`
 
 Set a toast's message text. The `MessageText` property should be set before you display a toast. The `SetMessageText` method is for changing a toast's message text while the toast is displayed (for example, changing the text displayed during the program of a long-running process).
 
-```c#
-SetMessageText(string)
-```
-
 ## Toast properties
-
 
 ### Toast properties overview
 
@@ -136,7 +131,7 @@ If `Duration` is set to `ToastDuration.FOREVER` by default a close "x" icon is s
 
 ![collateral/user-close-toast.png](https://rogerpence.dev/collateral/user-close-toast.png)
 
-There may be times when you want a long-lasting toast but don't want it closed by the user--rather you want to explicitly close it with your code. To do that, set `Dudration` to `ToastDuration.FOREVER` and set the `HideUserCloseButton` to `true`. When you want to close the toast, call the toast instance's `CloseToast()` method. This is discussed in more detail in the "Using toasts with a long-running process" section below.
+There may be times when you want a long-lasting toast but don't want it closed by the user--rather you want to explicitly close it with your code. To do that, set `Dudration` to `ToastDuration.FOREVER` and set the `HideUserCloseButton` to `true`. When you want to close the toast, call the toast instance's `CloseToast()` method. This is discussed in more detail in the "Avoiding Windows UI threading conflicts" section below.
 
 ### HeaderText
 
