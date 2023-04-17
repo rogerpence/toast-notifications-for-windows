@@ -16,7 +16,7 @@ namespace ToastNotification
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Toast toast  = new Toast(this);
+            Toast toast = new Toast(this);
 
             if (radiobuttonUpperLeft.Checked) toast.Position = Toast.ToastPosition.UPPER_LEFT;
             else if (radiobuttonUpperRight.Checked) toast.Position = Toast.ToastPosition.UPPER_RIGHT;
@@ -37,6 +37,7 @@ namespace ToastNotification
             toast.HideUserCloseButton = checkboxHideUserControlButton.Checked;
             toast.HideHeaderMessage = checkboxHideHeaderMessage.Checked;
             toast.HideAccentAndIcon = checkboxHideAccentAndIcon.Checked;
+            toast.StayOnTop = checkboxStayOnTop.Checked;
 
             toast.BorderColor = panelBorderColor.BackColor;
             toast.BackgroundColor = panelBackgroundColor.BackColor;
@@ -111,7 +112,7 @@ namespace ToastNotification
             code.AppendLine($"{indent}Toast toast = new Toast(this);");
             code.AppendLine("");
             string position = Toast.EnumGetName<Toast.ToastPosition>(toast.Position);
-            code.AppendLine($"{indent}toast.Position = Toast.ToastPosition.{position};") ;
+            code.AppendLine($"{indent}toast.Position = Toast.ToastPosition.{position};");
             string duration = Toast.EnumGetName<Toast.ToastDuration>(toast.Duration);
             code.AppendLine($"{indent}toast.Duration = Toast.ToastDuration.{duration};");
             string status = Toast.EnumGetName<Toast.ToastStatus>(toast.Status);
@@ -129,9 +130,9 @@ namespace ToastNotification
 
             code.AppendLine("");
             code.AppendLine($@"// {indent}If you want to change the default duration values:");
-            code.AppendLine($@"// {indent}toast.ChangeDefaultDurationSeconds(slowDuration: 5,"); 
-            code.AppendLine($@"// {indent}                                   mediumDuration: 10"); 
-            code.AppendLine($@"// {indent}                                   longDuration: 15,"); 
+            code.AppendLine($@"// {indent}toast.ChangeDefaultDurationSeconds(slowDuration: 5,");
+            code.AppendLine($@"// {indent}                                   mediumDuration: 10");
+            code.AppendLine($@"// {indent}                                   longDuration: 15,");
             code.AppendLine($@"// {indent}                                   extraLongDuration: 20)");
 
             if (toast.Duration == Toast.ToastDuration.FOREVER)

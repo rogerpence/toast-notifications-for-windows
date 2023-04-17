@@ -61,7 +61,7 @@ Toast toast  = new Toast(this);
 
 #### `ShowToast()`
 
-Show a toast
+Show a toast. Note that the toast form's intrinsic `Show` method has been overridden to call the `ShowToast` method. Either method would successfully show a toast.
 
 #### `CloseToast()`
 
@@ -91,6 +91,7 @@ Set a toast's message text. The `MessageText` property should be set before you 
 | MessageText         | Message text           | string | none                     |
 | Position            | Toast position         | enum   | ToastPosition.LOWER_LEFT |
 | Status              | Toast status           | enum   | ToastStatus.SUCCESS      |
+| StayOnTop | Make Toast topmost to parent | bool | false |
 
 #### BackgroundColor
 
@@ -203,9 +204,17 @@ ToastStatus.ERROR - #FF1B00 with a bomb
 
 ![collateral/toast-error.png](https://rogerpence.dev/collateral/toast-error.png)
 
+### StayOnTop
+
+| Description      | Type  | Default |
+| :---------------- | :----- | :------- |
+| Make Toast topmost to parent | bool | false |
+
+Most of the time this property should be `true.` If this property is `false` and a toast is shown, if the parent form gets focus while the toast is displayed the toast disappears behind the parent form. Given the transient nature of toasts (where they are usually displayed for only a few seconds), this problem is easily solved by making the toast topmost to its parent. For longer-displayed toasts, this may be an issue. If so, set this property to `true` to make the toast not topmost.
+
 ## Testing your toast
 
-The ToastNotificatino project in this repo is a Winform program that lets you play around with a toast configuration. Set the properties as needed and click "Show toast" to see the toast. If the toast duration is set to "user close" (which resolves to ToastDuration.FOREVER), the "Close toast" button is enabled.
+The ToastNotification project in this repo is a Winform program that lets you play around with a toast configuration. Set the properties as needed and click "Show toast" to see the toast. If the toast duration is set to "user close" (which resolves to ToastDuration.FOREVER), the "Close toast" button is enabled.
 
 ![collateral/toast-example.gif](https://rogerpence.dev/collateral/toast-example.gif)
 

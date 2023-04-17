@@ -43,6 +43,7 @@ namespace ToastNotification
         public bool HideHeaderMessage { get; set; } = false;
         public bool HideAccentAndIcon { get; set; } = false;
         public bool HideUserCloseButton { get; set; } = false;
+        public bool StayOnTop { get; set; } = true;
         public Color BackgroundColor { get; set; }
         public Color BorderColor { get; set; }
 
@@ -53,7 +54,6 @@ namespace ToastNotification
 
             BorderColor = this.BackColor;
             BackgroundColor = this.panelToast.BackColor;
-            this.TopMost = true;
         }
 
         public void ChangeDefaultDurationSeconds(int slowDuration,
@@ -109,6 +109,8 @@ namespace ToastNotification
 
         private void displayAndHideToast()
         {
+            this.TopMost = StayOnTop;
+
             Fader.FadeIn(this, Fader.FadeSpeed.Slow);
 
             if (Duration == ToastDuration.FOREVER) return;
@@ -190,6 +192,12 @@ namespace ToastNotification
                 this.Top = this.parentForm.Top + this.parentForm.Height - this.Height - 20;
             }
         }
+
+        public new void Show()
+        {
+            this.ShowToast();
+        }
+
 
         public void ShowToast()
         {

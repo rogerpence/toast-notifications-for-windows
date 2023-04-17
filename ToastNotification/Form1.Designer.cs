@@ -60,6 +60,7 @@
             checkboxHideUserControlButton = new CheckBox();
             labelBorderColorHex = new Label();
             labelBackgroundColorHex = new Label();
+            checkboxStayOnTop = new CheckBox();
             groupboxPosition.SuspendLayout();
             groupboxDuration.SuspendLayout();
             groupboxStatus.SuspendLayout();
@@ -67,7 +68,7 @@
             // 
             // buttonShowToast
             // 
-            buttonShowToast.Location = new Point(202, 932);
+            buttonShowToast.Location = new Point(202, 990);
             buttonShowToast.Name = "buttonShowToast";
             buttonShowToast.Size = new Size(328, 68);
             buttonShowToast.TabIndex = 0;
@@ -82,7 +83,7 @@
             groupboxPosition.Controls.Add(radiobuttonLowerLeft);
             groupboxPosition.Controls.Add(radiobuttonUpperRight);
             groupboxPosition.Controls.Add(radiobuttonUpperLeft);
-            groupboxPosition.Location = new Point(187, 580);
+            groupboxPosition.Location = new Point(187, 638);
             groupboxPosition.Name = "groupboxPosition";
             groupboxPosition.Size = new Size(278, 270);
             groupboxPosition.TabIndex = 1;
@@ -149,7 +150,7 @@
             groupboxDuration.Controls.Add(radiobuttonLong);
             groupboxDuration.Controls.Add(radiobuttonMedium);
             groupboxDuration.Controls.Add(radiobuttonShort);
-            groupboxDuration.Location = new Point(490, 583);
+            groupboxDuration.Location = new Point(490, 641);
             groupboxDuration.Name = "groupboxDuration";
             groupboxDuration.Size = new Size(300, 267);
             groupboxDuration.TabIndex = 2;
@@ -214,7 +215,7 @@
             groupboxStatus.Controls.Add(radiobuttonError);
             groupboxStatus.Controls.Add(radiobuttonInfo);
             groupboxStatus.Controls.Add(radiobuttonSuccess);
-            groupboxStatus.Location = new Point(815, 583);
+            groupboxStatus.Location = new Point(815, 641);
             groupboxStatus.Name = "groupboxStatus";
             groupboxStatus.Size = new Size(300, 181);
             groupboxStatus.TabIndex = 3;
@@ -289,7 +290,7 @@
             // buttonCloseToast
             // 
             buttonCloseToast.Enabled = false;
-            buttonCloseToast.Location = new Point(563, 932);
+            buttonCloseToast.Location = new Point(563, 990);
             buttonCloseToast.Name = "buttonCloseToast";
             buttonCloseToast.Size = new Size(279, 68);
             buttonCloseToast.TabIndex = 12;
@@ -385,11 +386,22 @@
             labelBackgroundColorHex.TabIndex = 21;
             labelBackgroundColorHex.Text = "Hex";
             // 
+            // checkboxStayOnTop
+            // 
+            checkboxStayOnTop.AutoSize = true;
+            checkboxStayOnTop.Location = new Point(196, 565);
+            checkboxStayOnTop.Name = "checkboxStayOnTop";
+            checkboxStayOnTop.Size = new Size(296, 36);
+            checkboxStayOnTop.TabIndex = 22;
+            checkboxStayOnTop.Text = "Toast topmost to parent";
+            checkboxStayOnTop.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(144F, 144F);
             AutoScaleMode = AutoScaleMode.Dpi;
             ClientSize = new Size(1392, 1093);
+            Controls.Add(checkboxStayOnTop);
             Controls.Add(labelBackgroundColorHex);
             Controls.Add(labelBorderColorHex);
             Controls.Add(checkboxHideUserControlButton);
@@ -456,5 +468,6 @@
         private CheckBox checkboxHideUserControlButton;
         private Label labelBorderColorHex;
         private Label labelBackgroundColorHex;
+        private CheckBox checkboxStayOnTop;
     }
 }
