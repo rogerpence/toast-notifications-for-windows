@@ -1,6 +1,6 @@
 # Toast notifcations for .NET 6+ Windows apps
 
-This library provides a flexible to asynchronous toast notifcations in .NET Windows apps. Figure 1 below shows an example of one of the toast options.
+This library provides a flexible way to show asynchronous toast notifcations in .NET Windows apps. Figure 1 below shows an example of one of the toast options.
 
 ![A toast in action](https://nyc3.digitaloceanspaces.com/rp-assets/toast-example.gif)
 
