@@ -2,7 +2,7 @@
 
 This library provides a flexible to asynchronous toast notifcations in .NET Windows apps. Figure 1 below shows an example of one of the toast options.
 
-![collateral/toast-example.gif](https://rogerpence.dev/collateral/toast-example.gif)
+![A toast in action](https://nyc3.digitaloceanspaces.com/rp-assets/toast-example.gif)
 
 <small>Figure 1. An example toast notification.</small>
 
@@ -130,7 +130,7 @@ ChangeDefaultDurationSeconds(int slowDuration,
 
 If `Duration` is set to `ToastDuration.FOREVER` by default a close "x" icon is shown in the upper-right hand corner of the toast:
 
-![collateral/user-close-toast.png](https://rogerpence.dev/collateral/user-close-toast.png)
+![collateral/user-close-toast.png](https://nyc3.digitaloceanspaces.com/rp-assets/user-close-toast.png)
 
 There may be times when you want a long-lasting toast but don't want it closed by the user--rather you want to explicitly close it with your code. To do that, set `Dudration` to `ToastDuration.FOREVER` and set the `HideUserCloseButton` to `true`. When you want to close the toast, call the toast instance's `CloseToast()` method. This is discussed in more detail in the "Avoiding Windows UI threading conflicts" section below.
 
@@ -194,15 +194,15 @@ ToastPosition.CENTER
 
 ToastStatus.SUCCESS - #408C3A with a checkbox 
 
-![collateral/toast-success.png](https://rogerpence.dev/collateral/toast-success.png)
+![collateral/toast-success.png](https://nyc3.digitaloceanspaces.com/rp-assets/toast-success.png)
 
 ToastStatus.INFO - #0F4CF1 with an exclamation point
 
-![collateral/toast-info.png](https://rogerpence.dev/collateral/toast-info.png)
+![collateral/toast-info.png](https://nyc3.digitaloceanspaces.com/rp-assets/toast-info.png)
 
 ToastStatus.ERROR - #FF1B00 with a bomb
 
-![collateral/toast-error.png](https://rogerpence.dev/collateral/toast-error.png)
+![collateral/toast-error.png](https://nyc3.digitaloceanspaces.com/rp-assets/toast-error.png)
 
 ### StayOnTop
 
@@ -216,7 +216,7 @@ Most of the time this property should be `true.` If this property is `false` and
 
 The ToastNotification project in this repo is a Winform program that lets you play around with a toast configuration. Set the properties as needed and click "Show toast" to see the toast. If the toast duration is set to "user close" (which resolves to ToastDuration.FOREVER), the "Close toast" button is enabled.
 
-![collateral/toast-example.gif](https://rogerpence.dev/collateral/toast-example.gif)
+![collateral/toast-example.gif](https://nyc3.digitaloceanspaces.com/rp-assets/toast-example.gif)
 
 ```
 Toast toast = new Toast(this);
